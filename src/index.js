@@ -1,10 +1,12 @@
 const express = require("express");
 const dotenv = require("dotenv");
+const bodyParser = require("body-parser");
 const v1WorkoutRouter = require("./v1/routes/workoutRoutes");
 const app = express();
 dotenv.config();
 const PORT = process.env.PORT || 8001;
 
+app.use(bodyParser.json());
 app.use("/api/v1/workouts", v1WorkoutRouter);
 
 app.listen(PORT, () => {
