@@ -9,7 +9,7 @@ const getOneWorkout = (req, res) => {
   const {
     params: { workoutId },
   } = req;
-
+  console.log("workoutId", workoutId);
   if (!workoutId) {
     return;
   }
@@ -41,8 +41,27 @@ const createNewWorkout = (req, res) => {
 };
 
 const updateOneWorkout = (req, res) => {
-  const updatedWorkout = workoutService.updateOneWorkout();
-  res.send("Update an existing workout");
+  const {
+    body,
+    params: { workoutId },
+  } = req;
+  if (!workoutId) {
+    return;
+  }
+  const updatedWorkout = workoutService.updateOneWorkout(workoutId, body);
+  res.send({ status: "OK", data: updatedWorkout });
+
+  // const {
+  //   body,
+  //   params: { workoutId },
+  // } = req;
+  // console.log("workoutId, body", workoutId, body);
+  // if (!workoutId) {
+  //   return;
+  // }
+  // const updatedWorkout = workoutService.updateOneWorkout(workoutId, body);
+  // console.log("updatedWorkoutu", updatedWorkout);
+  // res.status(202).send({ status: "OK", data: updatedWorkout });
 };
 
 const deleteOneWorkout = (req, res) => {
