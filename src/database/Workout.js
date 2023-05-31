@@ -12,6 +12,7 @@ const getOneWorkout = (workoutId) => {
   }
   return workout;
 };
+
 const createNewWorkout = (newWorkout) => {
   const isAlreadyAdded =
     DB.workouts.findIndex((workout) => workout.name === newWorkout.name) > -1;
@@ -40,9 +41,21 @@ const updateOneWorkout = (workoutId, changes) => {
   return updatedWorkout;
 };
 
+const deleteOneWorkout = (workoutId) => {
+  const indexForDeletion = DB.workouts.findIndex(
+    (workout) => workout.id === workoutId
+  );
+  if (indexForDeletion === -1) {
+    return;
+  }
+  DB.workouts.splice(indexForDeletion, 1);
+  saveToDatabase(DB);
+};
+
 module.exports = {
   getAllWorkouts,
-  getOneWorkout,
   createNewWorkout,
+  getOneWorkout,
   updateOneWorkout,
+  deleteOneWorkout,
 };
