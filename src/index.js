@@ -2,6 +2,9 @@ const express = require("express");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const v1WorkoutRouter = require("./v1/routes/workoutRoutes");
+const connectDB = require("./database/db");
+
+connectDB();
 const app = express();
 dotenv.config();
 const PORT = process.env.PORT || 8001;

@@ -1,5 +1,7 @@
 const DB = require("./db.json");
+const asyncHandler = require("express-async-handler");
 const { saveToDatabase } = require("./utils");
+const Workout = require("../models/workoutModel");
 
 const getAllWorkouts = () => {
   return DB.workouts;
@@ -36,6 +38,7 @@ const updateOneWorkout = (workoutId, changes) => {
     ...changes,
     updatedAt: new Date().toLocaleString("en-US", { timeZone: "UTC" }),
   };
+  console.log(DB.workouts[indexForUpdate], updatedWorkout);
   DB.workouts[indexForUpdate] = updatedWorkout;
   saveToDatabase(DB);
   return updatedWorkout;
