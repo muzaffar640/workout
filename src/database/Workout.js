@@ -4,15 +4,24 @@ const { saveToDatabase } = require("./utils");
 const Workout = require("../models/workoutModel");
 
 const getAllWorkouts = () => {
-  return DB.workouts;
+  try {
+    return DB.workouts;
+  } catch (error) {
+    throw error;
+  }
 };
 
 const getOneWorkout = (workoutId) => {
-  const workout = DB.workouts.find((workout) => workout.id === workoutId);
-  if (!workout) {
-    return;
+  try {
+    const workout = DB.workouts.find((workout) => workout.id === workoutId);
+    if (!workout) {
+      throw { status: 400, error: `Can't find workout with id ${workoutId}` };
+      return;
+    }
+    return workout;
+  } catch (error) {
+    throw { status: error?.status || 500, message: error?.message || error };
   }
-  return workout;
 };
 
 const createNewWorkout = (newWorkout) => {
@@ -45,7 +54,6 @@ const updateOneWorkout = (workoutId, changes) => {
     ...changes,
     updatedAt: new Date().toLocaleString("en-US", { timeZone: "UTC" }),
   };
-  console.log(DB.workouts[indexForUpdate], updatedWorkout);
   DB.workouts[indexForUpdate] = updatedWorkout;
   saveToDatabase(DB);
   return updatedWorkout;
