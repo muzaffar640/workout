@@ -13,7 +13,6 @@ const getRecordsForWorkout = (req, res) => {
       });
     }
     const records = recordService.getRecordForWorkout(workoutId);
-    console.log("records", records);
 
     res.status(200).send({ status: "OK", data: records });
   } catch (error) {
