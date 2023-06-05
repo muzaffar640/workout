@@ -1,10 +1,10 @@
 This branch provides data from hardcoded `db.json` file
 
-The server is live on [Render](https://workout-api-9sna.onrender.com)
+The server is live on [Render](https://workout-upws.onrender.com)
 
-For now you can checkout the [Routes](https://github.com/muzaffar640/workout/blob/api-with-jason-data/src/v1/routes/workoutRoutes.js) to get the endpoints.
+For now you can checkout the [Routes](https://github.com/muzaffar640/workout/blob/api-with-json-data/src/v1/routes/workoutRoutes.js) to get the endpoints.
 
-You can checkout the [API Documentations](https://workout-api-9sna.onrender.com/api/v1/docs/). For now the the documentation is added for `getAllWorkout` end point only for setting the template purpose.
+You can checkout the [API Documentations](https://workout-upws.onrender.com/api/v1/docs/). For now the the documentation is added for `getAllWorkout` end point only for setting the template purpose.
 
 ### **The main target is to create**
 
@@ -24,7 +24,7 @@ This documentation provides details about the Workout API endpoints. Below docs 
 
 ## Base URL
 
-The base URL for all API endpoints is: `https://workout-api-9sna.onrender.com/api/v1`
+The base URL for all API endpoints is: `https://workout-upws.onrender.com/api/v1`
 
 ## Endpoints
 
